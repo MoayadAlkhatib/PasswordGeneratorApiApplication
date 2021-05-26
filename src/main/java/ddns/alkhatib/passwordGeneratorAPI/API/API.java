@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class API {
 
     @Autowired
-    private PasswordGenerator pg;
+    private final PasswordGenerator pg;
+
+    public API(PasswordGenerator pg) {
+        this.pg = pg;
+    }
 
 
     @GetMapping
     @RequestMapping(path = "password-gen")
     public String getPassword(){
-        return pg.getPass();
+            return pg.getPass();
     }
 }
